@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@200..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+
+body{
+  background-color: #e9e5fe;
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+a{
+  text-decoration: none !important;
+}
+
+nav{
+  padding: 1rem 2rem;
+}
+
+nav img{
+  width: 2.5rem;
+}
+
+.hero{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.hero .top{
+  display: flex;
+  gap: 1rem;
+}
+
+.hero .top h3{
+  color: gray;
+  border: 2px solid gray;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-weight: 400;
+  font-size: .75rem;
+}
+
+.hero .text{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+  width: 100%;
+}
+
+.hero .text h1{
+  font-size: 6rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  font-family: 'Chiron GoRound TC', sans-serif;
+  transform: scaleY(2);
+  display: inline-block;
+}
+
+.hero .text img{
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30rem;
+  opacity: 0.75;
+  z-index: -1;
+}
+
+.hero .text .text-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.hero .text .text-container h2{
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #1a1a1a;
+  letter-spacing: -0.02em;
+}
+
+.hero .text .text-container button{
+  background-color: #1a1a1a;
+  color: #e9e5fe;
+  border: 2px solid #1a1a1a;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1.5rem;
+  font-weight: 400;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero .text .text-container button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(233, 229, 254, 0.4),
+    transparent
+  );
+  transition: all 0.6s;
+}
+
+.hero .text .text-container button:hover::before {
+  left: 150%;
+}

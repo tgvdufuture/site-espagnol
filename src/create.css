@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+
+:root {
+    --primary-bg: #e9e5fe;
+    --dark-text: #1a1a1a;
+    --accent-color: #6c5ce7;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.5);
+}
+
+body {
+    background: linear-gradient(135deg, #e9e5fe 0%, #d1c4e9 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+}
+
+.create-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.create-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    padding: 3rem;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    animation: fadeInScale 0.6s ease-out;
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.card-header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--dark-text);
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+.divider {
+    height: 4px;
+    width: 60px;
+    background: var(--dark-text);
+    margin: 1.5rem auto;
+    border-radius: 2px;
+}
+
+.card-body h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--dark-text);
+    margin-bottom: 1rem;
+}
+
+.card-body p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+#create-btn {
+    background: var(--dark-text);
+    color: var(--primary-bg);
+    border: none;
+    padding: 1rem 3rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+#create-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+#create-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Loading Overlay */
+#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(233, 229, 254, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+#loading-overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.loader-content {
+    text-align: center;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 5px solid rgba(26, 26, 26, 0.1);
+    border-top: 5px solid var(--dark-text);
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loader-content p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--dark-text);
+    margin: 0;
+}
+
+.loading-subtext {
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 0.5rem;
+    display: block;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Checkmark Animation */
+.checkmark-animation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.checkmark__circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: var(--dark-text);
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 4;
+    stroke: var(--dark-text);
+    stroke-miterlimit: 10;
+    box-shadow: inset 0px 0px 0px var(--dark-text);
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+}
+
+.checkmark__check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@keyframes stroke {
+    100% { stroke-dashoffset: 0; }
+}
+@keyframes scale {
+    0%, 100% { transform: none; }
+    50% { transform: scale3d(1.1, 1.1, 1); }
+}
+@keyframes fill {
+    100% { box-shadow: inset 0px 0px 0px 30px transparent; }
+}

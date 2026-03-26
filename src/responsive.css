@@ -1,0 +1,170 @@
+/* Mobile Styles (< 768px) */
+@media (max-width: 767px) {
+    body {
+        overflow-y: auto !important; /* Allow scrolling on mobile */
+    }
+
+    /* Index Page */
+    .hero .text h1 {
+        font-size: 3.5rem !important;
+        transform: scaleY(1.5) !important;
+        text-align: center;
+    }
+
+    .hero .text img {
+        width: 20rem !important;
+        bottom: 30rem !important;
+    }
+
+    .hero .text .text-container h2 {
+        font-size: 1.2rem !important;
+        text-align: center;
+    }
+
+    .hero .top {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem !important;
+    }
+
+    .hero .top h3 {
+        font-size: 0.65rem !important;
+        padding: 0.4rem 0.8rem !important;
+    }
+
+    /* Swipe Page */
+    .card {
+        width: 18rem !important;
+        height: 28rem !important;
+        bottom: 1rem !important;
+    }
+
+    .buttons {
+        gap: 2rem !important;
+        bottom: 1.5rem !important;
+    }
+
+    .buttons button {
+        width: 3rem !important;
+        height: 3rem !important;
+    }
+
+    .card-info {
+        padding: 60px 16px 5rem 16px !important;
+    }
+
+    .card-info h2 {
+        font-size: 1.25rem !important;
+    }
+
+    /* Create Page */
+    .create-card {
+        padding: 1.5rem !important;
+        margin: 1rem;
+    }
+
+    .card-header h1 {
+        font-size: 1.8rem !important;
+    }
+}
+
+/* Tablet Styles (768px - 1024px) */
+@media (min-width: 768px) {
+    .hero .text h1 {
+        font-size: 5rem !important;
+    }
+
+    .hero .text img {
+        width: 30rem !important;
+        bottom: 24rem !important;
+    }
+
+    .card {
+        width: 20rem !important;
+        height: 32rem !important;
+    }
+
+    .buttons {
+        gap: 3rem !important;
+    }
+}
+
+/* TV / Ultra-Wide Styles (> 1920px) */
+@media (min-width: 1921px) {
+    html {
+        font-size: 20px; /* Scale up everything based on rem */
+    }
+
+    nav img.logo{
+        scale: 1.5 !important; 
+        margin: 1.5rem;
+    }
+
+    nav button{
+        scale: 1.5 !important; 
+        margin: 1.5rem;
+        margin-right: 2.5rem !important;
+    }
+
+    .hero .text h1 {
+        font-size: 8rem !important;
+    }
+
+    .card {
+        width: 28rem !important;
+        height: 45rem !important;
+        max-width: none !important;
+        max-height: none !important;
+        border-radius: 40px !important;
+    }
+
+    .buttons {
+        gap: 8rem !important;
+    }
+
+    .buttons button {
+        width: 5rem !important;
+        height: 5rem !important;
+    }
+
+    .buttons button svg {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+    }
+
+    .hero .text img {
+        width: 45rem !important;
+        bottom: 27.5rem !important;
+    }
+
+    .card-info h2{
+        font-size: 3rem !important;
+    }
+
+    .card-info span{
+        font-size: 1.5rem !important;
+    }
+
+    .card-info{
+        padding: 60px 16px 9rem 16px !important;
+    }
+}
+
+/* 4K TV Styles (> 2560px) */
+@media (min-width: 2560px) {
+    html {
+        font-size: 24px;
+    }
+
+    .hero .text img {
+        width: 45rem !important;
+        bottom: 27.5rem !important;
+    }
+
+
+
+    .create-card{
+        width: 40rem !important; /* Adjusted to 60rem as 400rem is extremely large */
+        max-width: none !important;
+    }
+}

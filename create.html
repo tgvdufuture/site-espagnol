@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/style.css">
+    <link rel="stylesheet" href="./src/create.css">
+    <link rel="stylesheet" href="./src/responsive.css">
+    <title>Crea tu mujer - Swipefy</title>
+</head>
+<body>
+    <nav>
+        <a href="index.html"><img src="./icon.png" alt="logo_app"></a>
+    </nav>
+    <main class="create-container">
+        <div class="create-card">
+            <div class="card-header">
+                <h1>Crea tu mujer</h1>
+                <div class="divider"></div>
+            </div>
+            <div class="card-body">
+                <h2>¿De verdad estás seguro de que quieres hacer eso?</h2>
+                <p>Esta acción es irreversible y podría cambiar tu vida para siempre.</p>
+            </div>
+            <div class="card-footer">
+                <button id="create-btn">Crear</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="loading-overlay" class="hidden">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <p>Generando perfil...</p>
+            <span class="loading-subtext">Buscando en la base de datos de IA</span>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('create-btn').addEventListener('click', function() {
+            const overlay = document.getElementById('loading-overlay');
+            const loaderContent = document.querySelector('.loader-content');
+            
+            overlay.classList.add('visible');
+            overlay.classList.remove('hidden');
+            
+            // Phase 1: Loading
+            setTimeout(() => {
+                // Phase 2: Completion message
+                loaderContent.innerHTML = `
+                    <div class="checkmark-animation">
+                        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                            <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                            <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                        </svg>
+                    </div>
+                    <p>¡Completado!</p>
+                    <span class="loading-subtext" style="color: #1a1a1a; font-weight: 600; font-size: 1.1rem; margin-top: 1rem;">
+                        Tu mujer ideal te será entregada
+                    </span>
+                `;
+                
+                // Redirection after showing the message
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2500);
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
