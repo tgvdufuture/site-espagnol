@@ -176,8 +176,7 @@ nav a button img {
 }
 
 .buttons button.yes svg {
-  rotate: 180deg;
-  transform: scaleX(-1);
+  transform: rotate(180deg) scaleX(-1);
 }
 
 .buttons button.no:hover svg {
@@ -185,7 +184,7 @@ nav a button img {
 }
 
 .buttons button.yes:hover svg {
-  transform: scaleX(-1.1) scaleY(1.1) rotate(8deg);
+  transform: rotate(188deg) scaleX(-1.1) scaleY(1.1);
 }
 
 /* Swipe Animation Classes */
