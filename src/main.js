@@ -64,7 +64,7 @@ const cardTag = card ? card.querySelector('.card-info .tag') : null;
 // Dummy profiles data
 const profiles = [
   { img: './person/Manon.jpg', name: 'Manon', tag: 'Activista feminista' },
-  { img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=600&fit=crop', name: 'Sophie', tag: 'Passionnée de cuisine' },
+  { img: './person/Loane.png', name: 'Loane', tag: 'Muchos amigos' },
   { img: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=600&fit=crop', name: 'Emma', tag: 'Accro au sport' },
   { img: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=600&fit=crop', name: 'Léa', tag: 'Fan de musique' }
 ];
