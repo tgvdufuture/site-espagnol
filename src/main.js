@@ -17,12 +17,9 @@ if (heart) {
 const cta = document.querySelector('.hero .text .text-container button');
 
 if (cta) {
-  const accentColor = "#e9e5fe"; // Mauve clair
-  const primaryColor = "#1a1a1a"; // Noir
+  const accentColor = "#e9e5fe";
+  const primaryColor = "#1a1a1a";
 
-
-
-  // 2. Hover Effect (Couleur)
   cta.addEventListener('mouseenter', () => {
     gsap.to(cta, {
       backgroundColor: accentColor,
@@ -43,7 +40,6 @@ if (cta) {
     });
   });
 
-  // 3. Pulse Idle (très subtil sur l'ombre)
   gsap.to(cta, {
     boxShadow: "0 0 20px rgba(26, 26, 26, 0.15)",
     repeat: -1,
@@ -53,62 +49,119 @@ if (cta) {
   });
 }
 
-// --- Swipe Animation Logic pour swipe.html ---
+// --- Swipe Animation Logic ---
 const card = document.querySelector('.hero .card');
 const btnNo = document.querySelector('.buttons .no');
 const btnYes = document.querySelector('.buttons .yes');
-const cardImage = card ? card.querySelector('img') : null;
-const cardName = card ? card.querySelector('.card-info h2') : null;
-const cardTag = card ? card.querySelector('.card-info .tag') : null;
 
-// Dummy profiles data
+const cardImage    = document.getElementById('card-img');
+const cardVideo    = document.getElementById('card-video');
+const videoOverlay = document.getElementById('video-overlay');
+const playBtn      = document.getElementById('play-btn');
+const cardName     = card ? card.querySelector('.card-info h2') : null;
+const cardTag      = card ? card.querySelector('.card-info .tag') : null;
+const searchingEl  = document.getElementById('searching');
+const searchProgress = document.getElementById('search-progress');
+
 const profiles = [
-  { img: './person/Manon.jpg', name: 'Manon', tag: 'Activista feminista' },
-  { img: './person/Loane.png', name: 'Loane', tag: 'Muchos amigos' },
-  { img: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=600&fit=crop', name: 'Emma', tag: 'Accro au sport' },
-  { img: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=600&fit=crop', name: 'Léa', tag: 'Fan de musique' }
+  { img: './person/Line.jpg',     name: 'Line',     tag: 'Ama la vida' },
+  { img: './person/Melanie.jpg',  name: 'Melanie',  tag: 'Maquillaje pasión' },
+  { img: './person/Zara.jpg',     name: 'Zara',     tag: 'Reservada' },
+  { img: './person/Loane.png',    name: 'Loane',    tag: 'Muchos amigos' },
+  { img: './person/Agathe.jpg',   name: 'Agathe',   tag: 'Muchas relaciones' },
+  { img: './person/Manon.jpg',    name: 'Manon',    tag: 'Activista feminista' },
+  { img: './person/Faustine.mp4', name: 'Faustine', tag: 'Muy dinámica' },
 ];
 
 let profileIndex = 0;
 
-if (card && btnNo && btnYes) {
-  // Initialize first card
-  if (cardImage && cardName && cardTag) {
-    const defaultProfile = profiles[profileIndex];
-    cardImage.src = defaultProfile.img;
-    cardName.textContent = defaultProfile.name;
-    cardTag.textContent = defaultProfile.tag;
-    profileIndex++;
+// --- Utilitaire : est-ce une vidéo ?
+const isVideo = (src) => src.toLowerCase().endsWith('.mp4');
+
+// --- Charge un profil dans la card
+function loadProfile(profile) {
+  if (!cardVideo.paused) cardVideo.pause();
+  videoOverlay.classList.remove('playing');
+  playBtn.style.display = 'flex';
+
+  if (isVideo(profile.img)) {
+    cardImage.style.display    = 'none';
+    cardVideo.style.display    = 'block';
+    videoOverlay.style.display = 'flex';
+    cardVideo.src = profile.img;
+    cardVideo.load();
+  } else {
+    cardVideo.style.display    = 'none';
+    videoOverlay.style.display = 'none';
+    cardImage.style.display    = 'block';
+    cardImage.src = profile.img;
   }
 
+  if (cardName) cardName.textContent = profile.name;
+  if (cardTag)  cardTag.textContent  = profile.tag;
+}
+
+// --- Play / Pause au clic sur l'overlay
+if (videoOverlay && playBtn) {
+  videoOverlay.addEventListener('click', () => {
+    if (cardVideo.paused) {
+      cardVideo.play();
+      videoOverlay.classList.add('playing');
+      playBtn.style.display = 'none';
+    } else {
+      cardVideo.pause();
+      videoOverlay.classList.remove('playing');
+      playBtn.style.display = 'flex';
+    }
+  });
+}
+
+// --- Écran de recherche
+const showSearching = () => {
+  card.style.display = 'none';
+  searchingEl.style.display = 'flex';
+
+  let progress = 0;
+  const interval = setInterval(() => {
+    // Ralentit exponentiellement pour ne jamais atteindre 100%
+    progress += (95 - progress) * 0.008;
+    searchProgress.style.width = progress + '%';
+  }, 30);
+};
+
+// --- Swipe
+if (card && btnNo && btnYes) {
+  loadProfile(profiles[profileIndex]);
+  profileIndex++;
+
   const swipeCard = (direction) => {
-    // Prevent multiple clicks during animation
     if (card.classList.contains('swipe-left') || card.classList.contains('swipe-right')) return;
 
-    // 1. Swipe out
+    // Stop la vidéo si elle joue
+    if (!cardVideo.paused) cardVideo.pause();
+    videoOverlay.classList.remove('playing');
+    playBtn.style.display = 'flex';
+
     card.classList.add(`swipe-${direction}`);
-    
-    // 2. Wait for CSS transition (0.4s)
+
     setTimeout(() => {
-      // 3. Update Content
-      const profile = profiles[profileIndex % profiles.length];
-      cardImage.src = profile.img;
-      cardName.textContent = profile.name;
-      cardTag.textContent = profile.tag;
+      if (profileIndex >= profiles.length) {
+        card.classList.remove(`swipe-${direction}`);
+        showSearching();
+        return;
+      }
+
+      const profile = profiles[profileIndex];
+      loadProfile(profile);
       profileIndex++;
-      
-      // 4. Reset position without transition (invisible)
+
       card.classList.remove(`swipe-${direction}`);
       card.classList.add('reset-anim');
-      
-      // 5. Force reflow to process the removal of transition smoothly
       void card.offsetWidth;
-      
-      // 6. Remove reset-anim so that standard transitions apply for pop-in
       card.classList.remove('reset-anim');
-    }, 400); 
+    }, 400);
   };
 
-  btnNo.addEventListener('click', () => swipeCard('left'));
+  btnNo.addEventListener('click',  () => swipeCard('left'));
   btnYes.addEventListener('click', () => swipeCard('right'));
 }

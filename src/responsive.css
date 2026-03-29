@@ -66,6 +66,11 @@
     .card-header h1 {
         font-size: 1.8rem !important;
     }
+
+    .searching p {
+        font-size: 1rem !important;
+        text-align: center;
+    }
 }
 
 /* Tablet Styles (768px - 1024px) */

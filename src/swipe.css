@@ -121,6 +121,29 @@ nav a button img {
   letter-spacing: -0.01em;
 }
 
+.video-overlay {
+  position: absolute;
+  left: 40%;
+  top: 40%;
+}
+
+.play-btn {
+  width: 4rem;
+  height: 4rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.play-btn svg {
+  width: 5rem;
+  height: 5rem;
+  stroke: white;
+}
+
 .buttons {
   position: absolute;
   bottom: 2rem;
@@ -202,4 +225,42 @@ nav a button img {
   transition: none !important;
   transform: scale(0.8) translateY(50px);
   opacity: 0;
+}
+
+
+.searching {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  color: #1a1a1a;
+  font-size: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.search-bar {
+  width: 50vw;
+  height: 6px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.searching p {
+  font-size: 200%;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.search-progress {
+  height: 100%;
+  width: 50%;
+  background: #1a1a1a;
+  border-radius: 99px;
+  transition: width 0.05s linear;
 }
