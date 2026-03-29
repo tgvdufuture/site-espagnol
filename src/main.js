@@ -5,7 +5,7 @@ const heart = document.querySelector('.hero .text img[alt="heart"]');
 
 if (heart) {
   gsap.to(heart, {
-    y: -70,
+    y: -10,
     duration: 2.5,
     repeat: -1,
     yoyo: true,
