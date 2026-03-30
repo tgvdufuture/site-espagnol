@@ -65,6 +65,7 @@ const searchProgress = document.getElementById('search-progress');
 
 const profiles = [
   { img: './person/Line.jpg',     name: 'Line',     tag: 'Ama la vida' },
+  { img: './person/Lorette.jpg',     name: 'Lorette',     tag: 'Gusta salir de fiesta' },
   { img: './person/Melanie.jpg',  name: 'Melanie',  tag: 'Maquillaje pasión' },
   { img: './person/Zara.jpg',     name: 'Zara',     tag: 'Reservada' },
   { img: './person/Loane.png',    name: 'Loane',    tag: 'Muchos amigos' },
