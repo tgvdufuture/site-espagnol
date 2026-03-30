@@ -65,7 +65,7 @@ const searchProgress = document.getElementById('search-progress');
 
 const profiles = [
   { img: './person/Line.jpg',     name: 'Line',     tag: 'Ama la vida' },
-  { img: './public/person/Screenshot_2026-03-30-06-23-53-381_com.miui.gallery.jpg', tag:'Le gusta salir de fiesta"
+  { img: './public/person/Screenshot_2026-03-30-06-23-53-381_com.miui.gallery.jpg', name:'Lorette' tag:'Le gusta salir de fiesta'
   { img: './person/Melanie.jpg',  name: 'Melanie',  tag: 'Maquillaje pasión' },
   { img: './person/Zara.jpg',     name: 'Zara',     tag: 'Reservada' },
   { img: './person/Loane.png',    name: 'Loane',    tag: 'Muchos amigos' },
